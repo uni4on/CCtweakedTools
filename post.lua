@@ -1,26 +1,24 @@
-txfrog = peripheral.wrap("create:package_frogport_4")
-rxfrog = peripheral.wrap("create:package_frogport_5")
+tx = peripheral.wrap("minecraft:barrel_0")
+rx = peripheral.wrap("minecraft:barrel_1")
 
-txs = { "create:packager_1", "create:packager_3", "create:packager_5", "create:packager_11", "create:packager_9", "create:packager_7", "create:packager_17", "create:packager_15", "create:packager_13"}
+ct= { peripheral.find("create:packager") }
 
-rxs = {"create:packager_0", "create:packager_2", "create:packager_4", "create:packager_10", "create:packager_8", "create:packager_6", "create:packager_16", "create:packager_14", "create:packager_12"}
-
-function tx()
+function ftx()
     while true do
-        for k,v in pairs(txs) do
-            txfrog.pullItems(v, 1)
+        for k,v in pairs(ct) do
+            tx.pullItems(peripheral.getName(v), 1)
         end
     end
 end
 
-function rx()
+function frx()
     while true do
-        for k,v in pairs(rxfrog.list()) do
-            rxfrog.pushItems(rxs[math.random(#rxs)], k)
+        for k,v in pairs(rx.list()) do
+            rx.pushItems(peripheral.getName(ct[math.random(#ct)]), k)
         end
     end
 end
 
-parallel.waitForAll(rx, tx)
+parallel.waitForAll(frx, ftx)
 
 
