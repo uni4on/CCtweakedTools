@@ -1,7 +1,7 @@
 
 function lin()
 	for i=1, 50 do
-		turtle.dig()
+		gc()
 		dd()
 		turtle.forward()
 	end
@@ -12,9 +12,22 @@ function dd()
 	turtle.digUp()
 end
 
+function gc()
+	repeat
+		x = { turtle.inspect() }
+		if x[1] then
+			if x[2].tags["minecraft:replaceable"] == true then
+				return
+			else
+				turtle.dig()
+			end
+		end
+	until x[1] == true
+end
+
 function sd()
 	for i=1, 10 do
-		turtle.dig()
+		gc()
 		dd()
 		turtle.forward()
 	end
