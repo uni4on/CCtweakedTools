@@ -1,16 +1,24 @@
 
 function lin()
-	for i=1, 10 do
+	for i=1, 50 do
 		turtle.dig()
+		dd()
 		turtle.forward()
 	end
+end
+
+function dd()
+	turtle.digDown()
+	turtle.digUp()
 end
 
 function sd()
 	for i=1, 10 do
 		turtle.dig()
+		dd()
 		turtle.forward()
 	end
+	dd()
 end
 
 
