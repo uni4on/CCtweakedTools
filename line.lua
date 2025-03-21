@@ -22,7 +22,7 @@ function gc()
 				turtle.dig()
 			end
 		end
-	until x[1] == true
+	until x[1] ~= true
 end
 
 function sd()
